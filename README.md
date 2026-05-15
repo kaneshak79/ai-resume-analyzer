@@ -1,35 +1,35 @@
 # AI Resume Analyzer Backend
 
-FastAPI backend for the AI Resume Analyzer application.  
-This backend accepts resume PDFs and job descriptions, extracts resume content, and uses Groq LLM to generate ATS-style resume analysis.
+AI-powered Resume Analyzer backend built using FastAPI and Groq LLM.  
+This backend accepts resume PDFs and job descriptions, extracts resume text, and generates ATS-style analysis including ATS score, matching skills, missing skills, strengths, and improvement suggestions.
 
 ---
 
-## Features
+# Features
 
-- Upload Resume PDF
-- Extract text from PDF
-- Analyze resume against job description
-- ATS Score generation
-- Matching Skills detection
-- Missing Skills suggestions
-- AI-powered improvement recommendations
+- Resume PDF Upload
+- Resume Text Extraction
+- AI ATS Resume Analysis
+- Matching Skills Detection
+- Missing Skills Suggestions
+- Resume Improvement Recommendations
 - FastAPI REST API
-- CORS enabled for frontend integration
+- Groq LLM Integration
+- CORS Enabled for Frontend Communication
 
 ---
 
-## Tech Stack
+# Tech Stack
 
 - FastAPI
-- Groq API
 - Python
+- Groq API
 - PyPDF2
 - Uvicorn
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```bash
 backend/
@@ -38,3 +38,175 @@ backend/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
+
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/your-username/ai-resume-analyzer-backend.git
+```
+
+## Navigate to Backend Folder
+
+```bash
+cd backend
+```
+
+---
+
+# Create Virtual Environment
+
+## Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Mac/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+# Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# Environment Variables
+
+Create a `.env` file in backend folder:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+---
+
+# Run Backend
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend runs on:
+
+```txt
+http://127.0.0.1:8000
+```
+
+---
+
+# API Endpoints
+
+## Home Route
+
+### Request
+
+```http
+GET /
+```
+
+### Response
+
+```json
+{
+  "message": "AI Resume Analyzer Backend Running"
+}
+```
+
+---
+
+## Analyze Resume
+
+### Request
+
+```http
+POST /analyze
+```
+
+### Form Data
+
+| Field | Type |
+|---|---|
+| resume | PDF File |
+| job_description | String |
+
+---
+
+# Example Response
+
+```json
+{
+  "analysis": "ATS Score: 85/100\nMatching Skills: ..."
+}
+```
+
+---
+
+# CORS Configuration
+
+CORS is enabled for frontend integration.
+
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+---
+
+# Deployment
+
+## Deploy Backend on Render
+
+### Build Command
+
+```bash
+pip install -r requirements.txt
+```
+
+### Start Command
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 10000
+```
+
+---
+
+# Environment Variables on Render
+
+Add:
+
+| KEY | VALUE |
+|---|---|
+| GROQ_API_KEY | your_actual_api_key |
+
+---
+
+# Frontend
+
+Frontend built using React.js.
+
+---
+
+# Author
+
+Kanesha
+
+```
